@@ -1,0 +1,105 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header pb-0">
+        <div class="d-lg-flex">
+          <div>
+            <h5 class="mb-0">
+              Todos los sedes
+            </h5>
+          </div>
+          <div class="ms-auto my-auto mt-lg-0 mt-4  ">
+            <div class="ms-auto my-auto">
+              <a [routerLink]="['/dashboard-principal/sede/creacion']" class="btn bg-gradient-primary btn-sm mb-0">
+                +&nbsp; Nuevo sede
+              </a>
+              <button class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1" data-type="csv" type="button"
+                name="button">
+                Exportar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-0">
+        <div class="table-responsive">
+          <table class="table table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th>
+                  Nombre
+                </th>
+                <th>
+                  Direccion
+                </th>
+                <th>
+                  Celular
+                </th>
+                <th>
+                  Tipo
+                </th>
+                <th>
+                  Acciónes
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of sedes; track $index) {
+              <tr>
+                <td class="text-sm">
+                  {{item.Nombre}}
+                </td>
+                <td class="text-sm">
+                  {{item.Direccion}}
+                </td>
+                <td class="text-sm">
+                  {{item.Celular}}
+                </td>
+                <td class="text-sm">
+                  {{item.TipoSede}}
+                </td>
+                <td class="text-sm">
+                  <a (click)="editar(item.id)" class="mx-3" data-bs-toggle="tooltip"
+                    data-bs-original-title="Edit product">
+                    <i class="fas fa-user-edit text-secondary"></i>
+                  </a>
+                </td>
+              </tr>
+              }
+              @empty {
+              <tr>
+                <td colspan="6">
+                  <div class="d-flex justify-content-center">
+                    <p class="text-center">
+                      Esperando datos...
+                    </p>
+                  </div>
+                </td>
+              </tr>
+              }
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>
+                    Nombre
+                  </th>
+                  <th>
+                    Direccion
+                  </th>
+                  <th>
+                    Celular
+                  </th>
+                  <th>
+                    Tipo
+                  </th>
+                  <th>
+                    Acciónes
+                  </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

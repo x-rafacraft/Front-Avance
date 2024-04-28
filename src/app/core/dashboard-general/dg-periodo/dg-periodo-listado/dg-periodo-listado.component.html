@@ -1,0 +1,110 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <!-- Card header -->
+      <div class="card-header pb-0">
+        <div class="d-lg-flex">
+          <div>
+            <h5 class="mb-0">
+              Todos los periodos
+            </h5>
+          </div>
+          <div class="ms-auto my-auto mt-lg-0 mt-4  ">
+            <div class="ms-auto my-auto">
+              <a class="btn bg-gradient-primary btn-sm mb-0"
+              [routerLink]="['/dashboard-principal/periodo/creacion']">
+                +&nbsp; Nuevo periodo
+              </a>
+              <button data-type="csv" type="button" name="button"
+              class="btn btn-outline-primary btn-sm export mb-0 mt-sm-0 mt-1">
+                Exportar
+              </button>
+              <select (change)='onsedeSelected($event)'
+                id="select-type-basic"
+                class="form-control"
+                [(ngModel)]="sedeelegida"
+                name="TipoSede" required tabindex="1" autofocus>
+                <option class="text-primary" selected value="0">
+                  Seleccionar Sede
+                </option>
+                <option class="text-primary" [value]="obj.id" *ngFor="let obj of sedes">
+                {{obj.Nombre}}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card-body px-0 pb-0">
+        <div class="table-responsive">
+          <table class="table table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th>
+                  Nombre
+                </th>
+                <th>
+                  Empieza
+                </th>
+                <th>
+                  Termina
+                </th>
+                <th>
+                  Acciónes
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (item of periodos; track $index) {
+              <tr>
+                <td class="text-sm">
+                  {{item.Nombre}}
+                </td>
+                <td class="text-sm">
+                  {{item.Empieza | date: 'dd/MM/yyyy'}}
+                </td>
+                <td class="text-sm">
+                  {{item.Termina | date: 'dd/MM/yyyy'}}
+                </td>
+                <td class="text-sm">
+                  <a (click)="editar(item.id)" class="mx-3" data-bs-toggle="tooltip"
+                    data-bs-original-title="Edit product">
+                    <i class="fas fa-user-edit text-secondary"></i>
+                  </a>
+                </td>
+              </tr>
+              }
+              @empty {
+              <tr>
+                <td colspan="12">
+                  <div class="d-flex justify-content-center">
+                    <p class="text-center text-danger">
+                      Esperando que seleccione la sede para mostrar los periodos disponibles...
+                    </p>
+                  </div>
+                </td>
+              </tr>
+              }
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>
+                    Nombre
+                  </th>
+                  <th>
+                    Empieza
+                  </th>
+                  <th>
+                    Termina
+                  </th>
+                  <th>
+                    Acciónes
+                  </th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

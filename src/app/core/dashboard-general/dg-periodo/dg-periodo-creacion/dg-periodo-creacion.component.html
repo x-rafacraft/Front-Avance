@@ -1,0 +1,75 @@
+<div class="row mb-5">
+  <div class="col-lg-12 mt-lg-0 mt-4">
+    <div class="card mt-4" id="basic-info">
+      <div class="card-header">
+        <h5>
+          Información básica Periodo
+        </h5>
+      </div>
+      <div class="card-body pt-0">
+        <form #formcreateperiodo="ngForm" role="form">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Sede
+              </label>
+              <div class="input-group">
+                <select (change)='onsedeSelected($event)'
+                  id="select-type-basic"
+                  class="form-control"
+                  [(ngModel)]="sedeelegida"
+                  name="TipoSede" required tabindex="1" autofocus>
+                  <option class="text-primary" selected value="0">
+                    Seleccionar Sede
+                  </option>
+                  <option class="text-primary" [value]="obj.id" *ngFor="let obj of sedes">
+                  {{obj.Nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Nombre
+              </label>
+              <div class="input-group">
+                <input id="firstName" name="Nombre" required [(ngModel)]="periodo.Nombre"
+                tabindex="2" class="form-control" type="text" placeholder="Nombre">
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Empieza
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Empieza" required [(ngModel)]="periodo.Empieza"
+                tabindex="3" class="form-control" type="date" placeholder="Empieza"
+                  required="required">
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Termina
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Termina" required [(ngModel)]="periodo.Termina"
+                tabindex="4" class="form-control" type="date" placeholder="Termina"
+                  required="required">
+              </div>
+            </div>
+          </div>
+          <button
+          (click)="volver()"
+           class="btn bg-gradient-primary btn-sm float-start mt-6 mb-0">
+            Cancelar
+          </button>
+          <button
+          (click)="saveperiodo()" [disabled]="formcreateperiodo.form.invalid"
+           class="btn bg-gradient-success btn-sm float-end mt-6 mb-0">
+            Crear periodo
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,187 @@
+<div class="row mb-5">
+  <div class="col-lg-12 mt-lg-0 mt-4">
+    <div class="card mt-4" id="basic-info">
+      <div class="card-header">
+        <h5>
+          Información básica
+        </h5>
+      </div>
+      <div class="card-body pt-0">
+        <form #formupdateusuario="ngForm" role="form">
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Sede
+              </label>
+              <div class="input-group">
+                <select (change)='onsedeSelected($event)'
+                  id="select-type-basic"
+                  class="form-control"
+                  [(ngModel)]="usuario.SedeId"
+                  name="SedeId" required tabindex="1" autofocus>
+                  <option class="text-primary" selected value="0">
+                    Seleccionar Sede
+                  </option>
+                  <option class="text-primary" [value]="obj.id" *ngFor="let obj of sedes">
+                  {{obj.Nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                TipoDocumento
+              </label>
+              <div class="input-group">
+                <select (change)='onTipoDocSelected($event)'
+                  id="select-type-basic"
+                  class="form-control"
+                  [(ngModel)]="usuario.TipoDocumento"
+                  name="TipoDocumento" required tabindex="2">
+                  <option class="text-success" selected value="">
+                    Seleccionar Tipo Documento
+                  </option>
+                  <option class="text-success" [value]="obj.Nombre" *ngFor="let obj of tiposdocumentos">
+                  {{obj.Nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                NumDoc
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="NumDoc" required [(ngModel)]="usuario.NumDoc"
+                onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                tabindex="3" class="form-control" type="text" placeholder="NumDoc"
+                  required="required">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">
+                Nombre
+              </label>
+              <div class="input-group">
+                <input id="firstName" name="Nombre" required [(ngModel)]="usuario.Nombre" autofocus
+                tabindex="4" class="form-control" type="text" placeholder="Nombre">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">
+                Apellido
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Apellido" required [(ngModel)]="usuario.Apellido"
+                tabindex="5" class="form-control" type="text" placeholder="Apellido"
+                  required="required">
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Celular
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Celular" required [(ngModel)]="usuario.Celular"
+                onKeypress="if (event.keyCode < 45 || event.keyCode > 57) event.returnValue = false;"
+                tabindex="6" class="form-control" type="text" placeholder="Celular"
+                  required="required">
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Genero
+              </label>
+              <div class="input-group">
+                <select (change)='ongeneroSelected($event)'
+                  id="select-type-basic"
+                  class="form-control"
+                  [(ngModel)]="usuario.Genero"
+                  name="Genero" required tabindex="7">
+                  <option class="text-success" selected value="">
+                    Seleccionar Genero
+                  </option>
+                  <option class="text-success" [value]="obj.Nombre" *ngFor="let obj of generos">
+                  {{obj.Nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-12 col-md-4">
+              <label class="form-label">
+                Semestre
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Semestre" required [(ngModel)]="estudiante.Semestre"
+                tabindex="8" class="form-control" type="text" placeholder="Semestre"
+                  required="required">
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <label class="form-label">
+                Correo
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Correo" required [(ngModel)]="usuario.Correo"
+                ng-pattern=" ^[a-z]+[a-z0-9._-]+@[a-z]+\.[a-z.]{2,5}$"
+                tabindex="9" class="form-control" type="email" placeholder="Correo"
+                  required="required">
+              </div>
+            </div>
+            <!-- <div class="col-12 col-md-6">
+              <label class="form-label">
+                Contra
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="Contra" required [(ngModel)]="usuario.Contra"
+                tabindex="10" class="form-control" type="password" placeholder="Contra"
+                  required="required">
+              </div>
+            </div> -->
+          </div>
+          <button
+          (click)="volver()"
+           class="btn bg-gradient-primary btn-sm float-start mt-6 mb-0">
+            Cancelar
+          </button>
+          <button
+          (click)="updateusuario()" [disabled]="formupdateusuario.form.invalid"
+           class="btn bg-gradient-success btn-sm float-end mt-6 mb-0">
+            Crear usuario
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="col-lg-12 mt-lg-0 mt-4">
+    <div class="card mt-4" id="basic-info">
+      <div class="card-header">
+        <h5>
+          Resetear Contraseña
+        </h5>
+      </div>
+      <div class="card-body pt-0">
+        <form #formpasswordusuario="ngForm" role="form">
+          <div class="row">
+            <div class="col-12">
+              <label class="form-label">
+                Contraseña Nueva
+              </label>
+              <div class="input-group">
+                <input id="lastName" name="nuevacontra" required [(ngModel)]="nuevacontra"
+                tabindex="10" class="form-control" type="password" placeholder="Nueva Contraseña"
+                  required="required">
+              </div>
+            </div>
+          </div>
+          <button class="btn bg-gradient-success btn-sm float-end mt-6 mb-0"
+            (click)="updatepassword()" [disabled]="formpasswordusuario.form.invalid">
+            Actualizar Contraseña
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

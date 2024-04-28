@@ -1,0 +1,48 @@
+<div class="row mb-5">
+  <div class="col-lg-12 mt-lg-0 mt-4">
+    <div class="card mt-4" id="basic-info">
+      <div class="card-header">
+        <h5>
+          Información básica Empresa
+        </h5>
+      </div>
+      <div class="card-body pt-0">
+        <div class="row">
+          <div class="col-12 col-md-6">
+            <label class="form-label">
+              RUC
+            </label>
+            <div class="input-group">
+              <input id="firstName" name="Ruc" required [(ngModel)]="empresa.Ruc" autofocus
+              tabindex="1" class="form-control" type="text" placeholder="RUC"
+                required="required">
+            </div>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="form-label">
+              Representante
+            </label>
+            <div class="input-group">
+              <input id="lastName" name="Representante" required [(ngModel)]="empresa.Representante"
+              tabindex="2" class="form-control" type="text" placeholder="Representante"
+                required="required">
+            </div>
+          </div>
+          <div class="col-12 col-md-12">
+            <label class="form-label">
+              Razon Social
+            </label>
+            <div class="input-group">
+              <input id="lastName" name="RazonSocial" required [(ngModel)]="empresa.RazonSocial"
+              tabindex="3" class="form-control" type="text" placeholder="Razon Social"
+                required="required">
+            </div>
+          </div>
+        </div>
+        <button (click)="updateempresa()" class="btn bg-gradient-success btn-sm float-end mt-6 mb-0">
+          Actualizar Informacion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
